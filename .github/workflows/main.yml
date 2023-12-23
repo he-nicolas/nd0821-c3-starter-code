@@ -22,7 +22,7 @@ jobs:
         python -m pip install --upgrade pip # Upgrade pip to the latest version.
         pip install pytest # Install pytest.
         pip install flake8 # Install flake8.
-        if [ -f requirements.txt ]; then pip install -r starter/requirements.txt; fi # If we have a requirements.txt, then install it.
+        if [ -f starter/requirements.txt ]; then pip install -r starter/requirements.txt; fi # If we have a requirements.txt, then install it.
     - name: Test with pytest
       run: |
         pytest
