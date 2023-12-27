@@ -1,9 +1,6 @@
 from fastapi.testclient import TestClient
 import json
-import sys
-# Import our app from main.py.
-sys.path.insert(0, "./starter")
-from main import app
+from starter.main import app
 
 # Instantiate the testing client with our app.
 client = TestClient(app)

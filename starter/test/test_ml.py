@@ -5,10 +5,9 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 import sklearn
-import sys
-sys.path.insert(0, "./starter/starter/ml")
-from data import process_data
-from model import train_model, compute_model_metrics, inference
+from starter.starter.ml.data import process_data
+from starter.starter.ml.model import train_model, compute_model_metrics
+from starter.starter.ml.model import inference
 
 
 @pytest.fixture(scope="module")
