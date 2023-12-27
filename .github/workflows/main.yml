@@ -28,4 +28,4 @@ jobs:
         pytest
     - name: Run flake8
       run: |
-        flake8 --exclude ./starter/sanitycheck.py --ignore E402
+        flake8 --exclude ./starter/sanitycheck.py
