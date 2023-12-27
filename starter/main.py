@@ -8,9 +8,9 @@ from starter.starter.ml.data import process_data
 app = FastAPI()
 
 # Load the model
-model = pickle.load(open("./starter/model/model.pickle", "rb"))
-encoder = pickle.load(open("./starter/model/encoder.pickle", "rb"))
-lb = pickle.load(open("./starter/model/lb.pickle", "rb"))
+model = pickle.load(open("./starter/starter/model/model.pickle", "rb"))
+encoder = pickle.load(open("./starter/starter/model/encoder.pickle", "rb"))
+lb = pickle.load(open("./starter/starter/model/lb.pickle", "rb"))
 cat_features = [
     "workclass",
     "education",
