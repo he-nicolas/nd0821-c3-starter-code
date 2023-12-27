@@ -1,0 +1,80 @@
+Performance for education== Some-college: 
+Precision: 0.7069767441860465
+Recall: 0.5083612040133779
+Fbeta: 0.5914396887159533
+ 
+Performance for education== HS-grad: 
+Precision: 0.65625
+Recall: 0.3631123919308357
+Fbeta: 0.4675324675324676
+ 
+Performance for education== Bachelors: 
+Precision: 0.7671568627450981
+Recall: 0.7262180974477959
+Fbeta: 0.7461263408820025
+ 
+Performance for education== 10th: 
+Precision: 0.42857142857142855
+Recall: 0.2727272727272727
+Fbeta: 0.33333333333333326
+ 
+Performance for education== Doctorate: 
+Precision: 0.8181818181818182
+Recall: 0.8852459016393442
+Fbeta: 0.8503937007874016
+ 
+Performance for education== Assoc-acdm: 
+Precision: 0.6923076923076923
+Recall: 0.54
+Fbeta: 0.6067415730337079
+ 
+Performance for education== Prof-school: 
+Precision: 0.8571428571428571
+Recall: 0.9176470588235294
+Fbeta: 0.8863636363636362
+ 
+Performance for education== 12th: 
+Precision: 1.0
+Recall: 0.0
+Fbeta: 0.0
+ 
+Performance for education== Masters: 
+Precision: 0.7942583732057417
+Recall: 0.8426395939086294
+Fbeta: 0.8177339901477833
+ 
+Performance for education== Assoc-voc: 
+Precision: 0.6727272727272727
+Recall: 0.5211267605633803
+Fbeta: 0.5873015873015874
+ 
+Performance for education== 1st-4th: 
+Precision: 1.0
+Recall: 0.0
+Fbeta: 0.0
+ 
+Performance for education== 11th: 
+Precision: 1.0
+Recall: 0.46153846153846156
+Fbeta: 0.631578947368421
+ 
+Performance for education== 5th-6th: 
+Precision: 1.0
+Recall: 0.16666666666666666
+Fbeta: 0.2857142857142857
+ 
+Performance for education== 9th: 
+Precision: 1.0
+Recall: 0.0
+Fbeta: 0.0
+ 
+Performance for education== 7th-8th: 
+Precision: 1.0
+Recall: 0.2
+Fbeta: 0.33333333333333337
+ 
+Performance for education== Preschool: 
+Precision: 1.0
+Recall: 1.0
+Fbeta: 1.0
+ 

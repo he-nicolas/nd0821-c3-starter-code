@@ -79,8 +79,15 @@ def compute_model_metrics_on_slices(
     return precision, recall, fbeta
 
 
-# Print performance on model slices (education fixed)
-for value in test["education"].unique():
-    performance = compute_model_metrics_on_slices(
-        model, test, cat_features, encoder, lb, "education", value, True
-    )
+# Write results to slice_output.txt file
+with open('slice_output.txt', 'w') as f:
+    # Print performance on model slices (education fixed)
+    for value in test["education"].unique():
+        precision, recall, fbeta = compute_model_metrics_on_slices(
+            model, test, cat_features, encoder, lb, "education", value, True
+        )
+
+        f.write("Performance for education==" + str(value) + ": \n")
+        f.write("Precision: " + str(precision) + "\n")
+        f.write("Recall: " + str(recall) + "\n")
+        f.write("Fbeta: " + str(fbeta) + "\n \n")
