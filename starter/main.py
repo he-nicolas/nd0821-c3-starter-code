@@ -1,5 +1,4 @@
 import pickle
-import json
 import pandas as pd
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
@@ -30,7 +29,9 @@ class dataInput(BaseModel):
     fnlgt: int = Field(example=77516)
     education: str = Field(example="Bachelors")
     education_num: int = Field(example=13, alias="education-num")
-    marital_status: str = Field(example="Never-married", alias="marital-status")
+    marital_status: str = Field(
+        example="Never-married", 
+        alias="marital-status")
     occupation: str = Field(example="Adm-clerical")
     relationship: str = Field(example="Not-in-family")
     race: str = Field(example="White")
@@ -38,7 +39,9 @@ class dataInput(BaseModel):
     capital_gain: int = Field(example=2174, alias="capital-gain")
     capital_loss: int = Field(example=0, alias="capital-loss")
     hours_per_week: int = Field(example=40, alias="hours-per-week")
-    native_country: str = Field(example="United-States", alias="native-country")
+    native_country: str = Field(
+        example="United-States", 
+        alias="native-country")
 
 
 # Define a GET on the specified endpoint.
