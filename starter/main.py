@@ -1,11 +1,30 @@
+import pickle
+import json
+import pandas as pd
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
+from starter.ml.data import process_data
 
 # Instantiate the app.
 app = FastAPI()
 
+# Load the model
+model = pickle.load(open("starter/model/model.pickle", "rb"))
+encoder = pickle.load(open("starter/model/encoder.pickle", "rb"))
+lb = pickle.load(open("starter/model/lb.pickle", "rb"))
+cat_features = [
+    "workclass",
+    "education",
+    "marital-status",
+    "occupation",
+    "relationship",
+    "race",
+    "sex",
+    "native-country",
+]
 
-class Value(BaseModel):
+
+class dataInput(BaseModel):
     age: int = Field(example=45)
     workclass: str = Field(example="State-gov")
     fnlgt: int = Field(example=77516)
@@ -29,8 +48,18 @@ async def welcome_message():
 
 
 # Use POST action to send data to the server
-@app.post("/{path}")
-async def model_inference(path: int, query: int, body: Value):
+@app.post("/inference")
+async def model_inference(input_data: dataInput):
+    data_dict = input_data.dict(by_alias=True)
+    data_df = pd.DataFrame(data_dict, index=[0])
 
+    X, _, _, _ = process_data(
+        data_df,
+        categorical_features=cat_features,
+        training=False,
+        encoder=encoder,
+        lb=lb,
+    )
 
-    return {"path": path, "query": query, "body": body}
+    prediction = model.predict(X).tolist()
+    return {"result": prediction[0]}
