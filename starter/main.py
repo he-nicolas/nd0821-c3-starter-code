@@ -30,7 +30,7 @@ class dataInput(BaseModel):
     education: str = Field(example="Bachelors")
     education_num: int = Field(example=13, alias="education-num")
     marital_status: str = Field(
-        example="Never-married", 
+        example="Never-married",
         alias="marital-status")
     occupation: str = Field(example="Adm-clerical")
     relationship: str = Field(example="Not-in-family")
@@ -40,7 +40,7 @@ class dataInput(BaseModel):
     capital_loss: int = Field(example=0, alias="capital-loss")
     hours_per_week: int = Field(example=40, alias="hours-per-week")
     native_country: str = Field(
-        example="United-States", 
+        example="United-States",
         alias="native-country")
 
 
