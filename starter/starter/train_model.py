@@ -26,8 +26,9 @@ X_train, y_train, encoder, lb = process_data(
     train, categorical_features=cat_features, label="salary", training=True
 )
 
-# Save the encoder
+# Save the encoder and lb
 pickle.dump(encoder, open("starter/model/encoder.pickle", "wb"))
+pickle.dump(lb, open("starter/model/lb.pickle", "wb"))
 
 # Proces the test data with the process_data function.
 X_test, y_test, _, _ = process_data(

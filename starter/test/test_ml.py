@@ -14,7 +14,6 @@ from model import train_model, compute_model_metrics, inference
 @pytest.fixture(scope="module")
 def X_y_train():
     data = pd.read_csv("starter/data/census.csv")
-    encoder = pickle.load(open("starter/model/encoder.pickle", "rb"))
     train, test = train_test_split(data, test_size=0.20)
     cat_features = [
         "workclass",
@@ -26,14 +25,40 @@ def X_y_train():
         "sex",
         "native-country",
     ]
-    X_train, y_train, _, _ = process_data(
+    X_train, y_train, encoder, lb = process_data(
         train,
         categorical_features=cat_features,
         label="salary",
         training=True,
-        encoder=encoder,
     )
     return X_train, y_train
+
+
+@pytest.fixture(scope="module")
+def X_y_test():
+    data = pd.read_csv("starter/data/census.csv")
+    encoder = pickle.load(open("starter/model/encoder.pickle", "rb"))
+    lb = pickle.load(open("starter/model/lb.pickle", "rb"))
+    train, test = train_test_split(data, test_size=0.20)
+    cat_features = [
+        "workclass",
+        "education",
+        "marital-status",
+        "occupation",
+        "relationship",
+        "race",
+        "sex",
+        "native-country",
+    ]
+    X_test, y_test, _, _ = process_data(
+        test,
+        categorical_features=cat_features,
+        label="salary",
+        training=False,
+        encoder=encoder,
+        lb=lb
+    )
+    return X_test, y_test
 
 
 @pytest.fixture(scope="module")
@@ -48,11 +73,11 @@ def test_train_model(X_y_train):
     assert isinstance(model, sklearn.ensemble.RandomForestClassifier)
 
 
-def test_compute_model_metrics(X_y_train, model):
-    X_train, y_train = X_y_train
+def test_compute_model_metrics(X_y_test, model):
+    X_test, y_test = X_y_test
 
-    pred = inference(model, X_train)
-    metrics = compute_model_metrics(y_train, pred)
+    pred = inference(model, X_test)
+    metrics = compute_model_metrics(y_test, pred)
     precision, recall, fbeta = metrics
 
     assert isinstance(precision, np.float64)
@@ -60,8 +85,8 @@ def test_compute_model_metrics(X_y_train, model):
     assert isinstance(fbeta, np.float64)
 
 
-def test_inference(X_y_train, model):
-    X_train, y_train = X_y_train
-    pred = inference(model, X_train)
+def test_inference(X_y_test, model):
+    X_test, y_test = X_y_test
+    pred = inference(model, X_test)
 
     assert isinstance(pred, np.ndarray)
